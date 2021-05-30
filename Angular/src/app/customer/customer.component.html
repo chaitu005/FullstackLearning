@@ -1,14 +1,20 @@
-<p>Customers List</p>
-
-
 <table *ngIf="customers">
     <thead>
-        <tr>
+        <tr class="custList">
             <th colspan="8">
-                Your registered users are here
+                <span>
+                    Customers
+                </span>
             </th>
         </tr>
-        <tr>
+        <tr class="custList">
+            <th colspan="8">
+                <span>
+                    Your registered users are here
+                </span>
+            </th>
+        </tr>
+        <tr class="custList">
             <th *ngFor = "let col of  columns">
                 <span class="data"> {{col.title}}</span>
             </th>
@@ -16,31 +22,32 @@
 
     </thead>
     <tbody>
-        <tr *ngFor = "let custObj of  customers">
+        <tr *ngFor = "let custObj of  customers" class="custListBody">
             <td *ngFor = "let col of  columns">
                 <span class="data"> {{custObj[col.id] | transform : col.id}}</span>
             </td>
-            <!-- <td>
-                <input type="button" (click) ="deleteCustomer()" value="Delete" > 
-            </td> -->
         </tr>
     </tbody>        
 </table>
-<br /><br />
-
-<input type="text" [(ngModel)] ="searchKey" >
-
-<input type="button" (click) ="searchCustomers()" value="Search" >
-
-<br /><br />
+<div class="searchBlock">
+    <div>
+        Search Here
+    </div>
+    <div>
+        <input type="text" class="inputCtrl" [(ngModel)] ="searchKey" >
+        <button type="button" class="btnSearch" (click) ="searchCustomers()" >
+            Search
+        </button>
+    </div>
+</div>
 <table *ngIf="customersFound.length>0" border="1" >
     <thead>
-        <tr>
+        <tr class="custList">
             <th colspan="8">
                 Your search results are here
             </th>
         </tr>
-        <tr>
+        <tr class="custList">
             <th *ngFor = "let col of  columns">
                 <span class="data"> {{col.title}}</span>
             </th>
@@ -48,34 +55,31 @@
 
     </thead>
     <tbody>
-        <tr *ngFor = "let custObj of  customersFound">
+        <tr *ngFor = "let custObj of  customersFound" class="custListBody">
             <td *ngFor = "let col of  columns">
                 <span class="data"> {{custObj[col.id]}}</span>
             </td>
         </tr>
     </tbody>        
 </table>
-<br /><br />
 
-<div>
-    Add User Here!!!
-</div>
-<table>
+<table class="formReg">
+    <thead>
+        <tr>
+            <td colspan="2">
+                <div class="custList">
+                    Add User Here!!!
+                </div>
+            </td>
+        </tr>
+    </thead>
     <tbody>
-        <!-- <tr>
-            <td>
-                StudentId
-            </td>
-            <td>
-                <input type="text"  [(ngModel)] ="customer.StudentId" >
-            </td>
-        </tr> -->
         <tr>
             <td>
                 FirstName
             </td>
             <td>
-                <input type="text"  [(ngModel)] ="customer.FirstName" >
+                <input type="text" class="inputCtrl"  [(ngModel)] ="customer.FirstName" >
             </td>
         </tr>
         <tr>
@@ -83,7 +87,7 @@
                 LastName
             </td>
             <td>
-                <input type="text"  [(ngModel)] ="customer.LastName" >
+                <input type="text"  class="inputCtrl" [(ngModel)] ="customer.LastName" >
             </td>
         </tr>
         <tr>
@@ -91,7 +95,7 @@
                 Email
             </td>
             <td>
-                <input type="text"  [(ngModel)] ="customer.Email" >
+                <input type="text"  class="inputCtrl" [(ngModel)] ="customer.Email" >
             </td>
         </tr>
         <tr>
@@ -99,7 +103,7 @@
                 DateOfBirth
             </td>
             <td>
-                <input type="text"  [(ngModel)] ="customer.DateOfBirth" >
+                <input type="text"  class="inputCtrl" [(ngModel)] ="customer.DateOfBirth" >
             </td>
         </tr>
         <tr>
@@ -130,14 +134,21 @@
                 About
             </td>
             <td>
-                <textarea type="text"  [(ngModel)] ="customer.About" > </textarea>
+                <textarea type="text"  class="TxtAreaCtrl" [(ngModel)] ="customer.About" > </textarea>
             </td>
         </tr>
+        <td colspan="2">
+            <div class="txtCentr">
+                <button type="button" (click) ="addCustomer()" class="btnSearch" >
+                    ADD
+                </button>
+            </div>
+        </td>
 
     </tbody>        
 </table> 
-<input type="button" (click) ="addCustomer()" value="ADD" >
 
-<div *ngIf="msgText">
+
+<div *ngIf="msgText" class="custList msgBlck">
     {{msgText}}
 </div>
