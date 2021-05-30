@@ -1,0 +1,143 @@
+<p>Customers List</p>
+
+
+<table *ngIf="customers">
+    <thead>
+        <tr>
+            <th colspan="8">
+                Your registered users are here
+            </th>
+        </tr>
+        <tr>
+            <th *ngFor = "let col of  columns">
+                <span class="data"> {{col.title}}</span>
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor = "let custObj of  customers">
+            <td *ngFor = "let col of  columns">
+                <span class="data"> {{custObj[col.id] | transform : col.id}}</span>
+            </td>
+            <!-- <td>
+                <input type="button" (click) ="deleteCustomer()" value="Delete" > 
+            </td> -->
+        </tr>
+    </tbody>        
+</table>
+<br /><br />
+
+<input type="text" [(ngModel)] ="searchKey" >
+
+<input type="button" (click) ="searchCustomers()" value="Search" >
+
+<br /><br />
+<table *ngIf="customersFound.length>0" border="1" >
+    <thead>
+        <tr>
+            <th colspan="8">
+                Your search results are here
+            </th>
+        </tr>
+        <tr>
+            <th *ngFor = "let col of  columns">
+                <span class="data"> {{col.title}}</span>
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <tr *ngFor = "let custObj of  customersFound">
+            <td *ngFor = "let col of  columns">
+                <span class="data"> {{custObj[col.id]}}</span>
+            </td>
+        </tr>
+    </tbody>        
+</table>
+<br /><br />
+
+<div>
+    Add User Here!!!
+</div>
+<table>
+    <tbody>
+        <!-- <tr>
+            <td>
+                StudentId
+            </td>
+            <td>
+                <input type="text"  [(ngModel)] ="customer.StudentId" >
+            </td>
+        </tr> -->
+        <tr>
+            <td>
+                FirstName
+            </td>
+            <td>
+                <input type="text"  [(ngModel)] ="customer.FirstName" >
+            </td>
+        </tr>
+        <tr>
+            <td>
+                LastName
+            </td>
+            <td>
+                <input type="text"  [(ngModel)] ="customer.LastName" >
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Email
+            </td>
+            <td>
+                <input type="text"  [(ngModel)] ="customer.Email" >
+            </td>
+        </tr>
+        <tr>
+            <td>
+                DateOfBirth
+            </td>
+            <td>
+                <input type="text"  [(ngModel)] ="customer.DateOfBirth" >
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Gender
+            </td>
+            <td>
+                <input type="radio" value="1"  [(ngModel)] ="customer.Gender" >
+                <label>Male</label>
+                <input type="radio" value="2" [(ngModel)] ="customer.Gender" >
+                <label>FeMale</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Education
+            </td>
+            <td>
+                <div *ngFor="let edu of education;">
+                    <label>
+                        <input type="checkbox" (change)="onChange(edu.name, $event)" >
+                        {{edu.name}}</label>
+                </div>               
+            </td>
+        </tr>
+        <tr>
+            <td>
+                About
+            </td>
+            <td>
+                <textarea type="text"  [(ngModel)] ="customer.About" > </textarea>
+            </td>
+        </tr>
+
+    </tbody>        
+</table> 
+<input type="button" (click) ="addCustomer()" value="ADD" >
+
+<div *ngIf="msgText">
+    {{msgText}}
+</div>

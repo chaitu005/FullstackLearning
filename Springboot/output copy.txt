@@ -1,0 +1,5 @@
+1~Homer~Simpson~homer.simpson@appliedis.com~02/20/1992	
+2~Bart~Simpson~bart.simpson@appliedis.com~04/10/1990	
+3~Lisa~Simpson~lisa.simpson@appliedis.com~06/15/1988	
+4~Marge~Simpson~marge.simpson@appliedis.com~08/31/1984	
+5~Grampa~Simpson~grampa.simpson@appliedis.com~10/25/1986
